@@ -1,0 +1,12 @@
+{
+  "name": "speed-test",
+  "version": "1.0.0",
+  "description": "Browser based ping, download and upload speed test",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speed Test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Speed Test</h1>
+    <p>Measures the ping, download speed and upload speed between your browser and this server.</p>
+
+    <button id="start-button">Start</button>
+
+    <p id="status">Press Start to begin.</p>
+    <progress id="progress" max="100" value="0"></progress>
+
+    <div class="results">
+      <div class="result">
+        <h2>Ping</h2>
+        <p><span id="ping-value">-</span> <small>ms</small></p>
+      </div>
+      <div class="result">
+        <h2>Download</h2>
+        <p><span id="download-value">-</span> <small>Mbps</small></p>
+      </div>
+      <div class="result">
+        <h2>Upload</h2>
+        <p><span id="upload-value">-</span> <small>Mbps</small></p>
+      </div>
+    </div>
+
+    <table>
+      <tr><th>Jitter</th><td id="jitter-value">-</td></tr>
+      <tr><th>Data downloaded</th><td id="downloaded-value">-</td></tr>
+      <tr><th>Data uploaded</th><td id="uploaded-value">-</td></tr>
+      <tr><th>Test duration</th><td id="duration-value">-</td></tr>
+    </table>
+  </main>
+
+  <script src="speedtest.js"></script>
+</body>
+</html>
