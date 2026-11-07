@@ -6,6 +6,9 @@ browser and the server. It also reports how much data the test used.
 The speed testing itself is written from scratch. The server only uses modules
 built into Node.js and the page is plain JavaScript, so there are no libraries.
 
+A live version runs at <http://51.20.84.127:8080/>, on an AWS EC2 `t3.micro` machine
+in Stockholm (`eu-north-1`).
+
 ## Requirements
 
 - Node.js 18 or newer (developed with Node.js 24). Nothing needs to be installed
@@ -156,21 +159,47 @@ twice as long on noisy links without being more accurate, so it was removed.
 
 ## Comparison with other speed tests
 
-Fill this in from the deployed server. Run the tests one after another, on the same
-connection, with nothing else using it.
+The deployed server was compared with other tools on real connections. Each tool
+connects to its own server, so the results do not always cover the same path.
+
+### Home connection (TurkNet)
 
 | Tool | Server location | Ping (ms) | Download (Mbps) | Upload (Mbps) | Data used |
 | --- | --- | --- | --- | --- | --- |
-| This project | | | | | |
-| speedtest.net | | | | | |
+| This project | AWS, Stockholm | 60.0 | 35.4 | 20.7 | 17.6 MB down, 8.6 MB up |
+| Speedtest (Türk Telekom page) | TurkNet, Istanbul | 5 | 101.6 | 21.3 | Not shown |
+| speedtest.net | Stockholm | | | | |
 | fast.com | | | | | |
 | hiztesti.com.tr | | | | | |
 
+The upload agrees within 3%. The ping is higher because Stockholm is much further
+away than Istanbul. The download is about a third of the Speedtest result, but that
+server is in the same provider's network, so it does not show the speed to
+Stockholm. The cause of this gap has not been confirmed. The server and the code do
+not limit the speed to this level, because they passed 160 Mbps on the connection
+below.
+
+### Phone hotspot
+
+| Tool | Server location | Ping (ms) | Download (Mbps) | Upload (Mbps) | Data used |
+| --- | --- | --- | --- | --- | --- |
+| This project, 3 runs | AWS, Stockholm | 92.0 to 94.5 | 163.4 to 210.1 | 60.5 to 73.1 | 65 to 118 MB down, 29 to 62 MB up |
+| `curl`, 8 runs with 4 to 12 connections | AWS, Stockholm | 88 to 90 (TCP connect) | 129.9 to 185.8 | Not measured | Not recorded |
+| Apple `networkQuality`, 1 run | Apple | 79 | 183.2 | 86.7 | 430 MB down, 144 MB up |
+
+The download agrees with both other tools. The upload is about 20% below
+`networkQuality`, but that tool used a different server, and no independent upload
+test was run against this server.
+
+The speed of this connection kept changing, so the result often did not settle.
+The upload reached the 8 second limit in 2 of the 3 runs, and a full test took
+between 10 and 17 seconds.
+
 ## Limitations
 
-- The tests above use a simulated link. It imitates speed, delay, ramp and noise,
-  but not packet loss or real TCP congestion control. A real network can behave
-  differently, which is why the comparison above is needed.
+- The accuracy tests above use a simulated link. It imitates speed, delay, ramp and
+  noise, but not packet loss or real TCP congestion control. The only runs on real
+  networks are the ones in the comparison above.
 - On a very slow uplink (below about 1 Mbps) the reported upload can be much lower
   than what was really sent, because the stop request is stuck behind the data on
   its way. The speed is not affected. Slow uplinks can also add up to 2 seconds
