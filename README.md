@@ -152,41 +152,25 @@ twice as long on noisy links without being more accurate, so it was removed.
 The deployed server was compared with other tools on real connections. Each tool
 connects to its own server, so the results do not always cover the same path.
 
-### Home connection (TurkNet)
-
-| Tool | Server location | Ping (ms) | Download (Mbps) | Upload (Mbps) | Data used |
-| --- | --- | --- | --- | --- | --- |
-| This project | AWS, Stockholm | 60.0 | 35.4 | 20.7 | 17.6 MB down, 8.6 MB up |
-| Speedtest (Türk Telekom page) | TurkNet, Istanbul | 5 | 101.6 | 21.3 | Not shown |
-| speedtest.net | Stockholm | | | | |
-| fast.com | | | | | |
-| hiztesti.com.tr | | | | | |
-
-The upload agrees within 3%. The ping is higher because Stockholm is much further
-away than Istanbul. The download is about a third of the Speedtest result, but that
-server is in the same provider's network, so it does not show the speed to
-Stockholm. The cause of this gap has not been confirmed. The server and the code do
-not limit the speed to this level, because they passed 160 Mbps on the connection
-below.
-
-### Additional Wi-Fi comparison (Group 16)
+### Wi-Fi comparison
 
 The following results were reported from the same Wi-Fi connection. Only the
 Speedtest server was explicitly selected as Stockholm; the other tools' server
 locations were not recorded. These are individual runs, not averages.
 
-| Tool | Server location | Ping (ms) | Download (Mbps) | Upload (Mbps) | Data used |
-| --- | --- | --- | --- | --- | --- |
-| This project | AWS, Stockholm | 99.8 | 8.75 | 37.8 | Not recorded |
-| hiztesti.com | Not recorded | 18 | 32.8 | 39.8 | Not recorded |
-| fast.com | Not recorded | 55 | 21 | 37 | Not recorded |
-| speedtest.net | Tele2 Sweden, Stockholm | 78 | 30.80 | 25.24 | Not recorded |
+| Tool | Server location | Ping (ms) | Download (Mbps) | Upload (Mbps) |
+| --- | --- | --- | --- | --- |
+| This project | AWS, Stockholm | 99.8 | 8.75 | 37.8 |
+| hiztesti.com | Not recorded | 18 | 32.8 | 39.8 |
+| fast.com | Not recorded | 55 | 21 | 37 |
+| speedtest.net | Tele2 Sweden, Stockholm | 78 | 30.80 | 25.24 |
 
 The project's upload was close to hiztesti.com and fast.com in these runs. Its
 download was substantially lower than all three comparison tools, including the
 Stockholm server. The cause has not been established, so these results do not
 confirm download accuracy. Different tools can use different network paths even
 when their servers are in the same city.
+
 
 ### Phone hotspot
 
