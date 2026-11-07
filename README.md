@@ -1,5 +1,13 @@
 # Speed Test
 
+**Group 16**
+
+**Team members:** Kaan Yücel, Mir Bedirhan Kaygusuz
+
+**Public server IP:** `51.20.84.127`
+
+**Website:** <http://51.20.84.127:8080/>
+
 A website that measures the ping, download speed and upload speed between the
 browser and the server. It also reports how much data the test used.
 
@@ -160,6 +168,25 @@ server is in the same provider's network, so it does not show the speed to
 Stockholm. The cause of this gap has not been confirmed. The server and the code do
 not limit the speed to this level, because they passed 160 Mbps on the connection
 below.
+
+### Additional Wi-Fi comparison (Group 16)
+
+The following results were reported from the same Wi-Fi connection. Only the
+Speedtest server was explicitly selected as Stockholm; the other tools' server
+locations were not recorded. These are individual runs, not averages.
+
+| Tool | Server location | Ping (ms) | Download (Mbps) | Upload (Mbps) | Data used |
+| --- | --- | --- | --- | --- | --- |
+| This project | AWS, Stockholm | 99.8 | 8.75 | 37.8 | Not recorded |
+| hiztesti.com | Not recorded | 18 | 32.8 | 39.8 | Not recorded |
+| fast.com | Not recorded | 55 | 21 | 37 | Not recorded |
+| speedtest.net | Tele2 Sweden, Stockholm | 78 | 30.80 | 25.24 | Not recorded |
+
+The project's upload was close to hiztesti.com and fast.com in these runs. Its
+download was substantially lower than all three comparison tools, including the
+Stockholm server. The cause has not been established, so these results do not
+confirm download accuracy. Different tools can use different network paths even
+when their servers are in the same city.
 
 ### Phone hotspot
 
