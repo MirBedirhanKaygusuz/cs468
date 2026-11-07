@@ -200,3 +200,6 @@ between 10 and 17 seconds.
 | `public/style.css` | Styling of the page |
 | `public/speedtest.js` | The tests, the speed calculation and the display of results |
 | `tools/throttle-proxy.js` | Simulated network link, only used for accuracy tests |
+| `deploy/README.md` | Step-by-step guide for deploying on AWS EC2 |
+| `deploy/install.sh` | Installs the server on Ubuntu 24.04 as a service |
+| `deploy/speedtest.service` | systemd service that keeps the server running |
