@@ -33,28 +33,10 @@ the throttling proxy described below, to get meaningful numbers.
 
 ## Deploying to a cloud server
 
-These steps are for an Ubuntu 24.04 virtual machine on AWS EC2, but any virtual
-machine works the same way.
-
-1. Create the machine in the region closest to you, and allow inbound TCP
-   traffic on port 8080 in its security group.
-2. Copy the project to it:
-
-   ```bash
-   scp -r server.js package.json public ubuntu@SERVER_IP:speedtest/
-   ```
-
-3. Connect with `ssh ubuntu@SERVER_IP`, then install Node.js and start the server:
-
-   ```bash
-   sudo apt update && sudo apt install -y nodejs
-   ```
-
-   ```bash
-   cd speedtest && nohup node server.js > server.log 2>&1 &
-   ```
-
-4. Open `http://SERVER_IP:8080` in a browser.
+Use an Ubuntu 24.04 EC2 instance with a public IPv4 address. Follow
+[the AWS deployment guide](deploy/README.md) to configure networking, copy the
+project, and install a systemd service that starts at boot and restarts on failure.
+There is no npm install or build step. The application listens directly on 8080.
 
 Two things to watch out for:
 

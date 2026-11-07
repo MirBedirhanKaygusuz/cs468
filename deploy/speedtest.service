@@ -1,0 +1,21 @@
+[Unit]
+Description=CS468 speed test server
+After=network.target
+
+[Service]
+Type=simple
+User=speedtest
+Group=speedtest
+WorkingDirectory=/opt/speedtest
+ExecStart=/usr/bin/node /opt/speedtest/server.js
+Environment=PORT=8080
+Environment=NODE_ENV=production
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
